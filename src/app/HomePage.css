@@ -1,0 +1,18 @@
+.homepage-container {
+  height: calc(100vh - 70px); /* resta la altura de la navbar */
+  margin-top: 0px; /* empuja el contenido debajo de la navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+
+.logo-wrapper {
+  text-align: center;
+}
+
+.logo {
+  width: 500px; 
+  height: auto;
+}

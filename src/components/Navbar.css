@@ -1,0 +1,67 @@
+
+.deepweb-navbar {
+  background-color: #0D0D0D; /* Negro muy oscuro, casi absoluto (como .form) */
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Lucida Console', 'Courier New', monospace; /* Fuente monoespaciada (como .container) */
+  border-bottom: 2px solid #800000; /* Borde rojo sangre oscuro (similar a .button o .input border oscuro) */
+  box-shadow: 0 2px 15px rgba(255, 0, 0, 0.3), 0 0 8px rgba(255, 0, 0, 0.4); /* Resplandor rojo más sutil */
+  text-align: left; /* Coherente con .form */
+}
+
+/* Estilos para el logo */
+.deepweb-navbar .navbar-logo h1 {
+  color: #FF0000; /* Rojo sangre brillante (como .title) */
+  font-size: 1.8rem; /* Ligeramente ajustado */
+  font-weight: 700; /* Bold (como .title) */
+  margin: 0;
+  text-transform: uppercase; /* MAYÚSCULAS (como .title) */
+  letter-spacing: 1.5px; /* Espaciado de letras (como .title) */
+  text-shadow: 0 0 3px #FF0000, 0 0 7px #FF0000, 0 0 10px #FF0000; /* Resplandor rojo intenso (como .title) */
+}
+
+/* Asegura que el Link del logo no tenga estilos por defecto */
+.deepweb-navbar .navbar-logo a {
+  text-decoration: none;
+}
+
+/* Lista de enlaces de navegación */
+.deepweb-navbar .nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.2rem; /* Espacio ligeramente ajustado */
+}
+
+/* Enlaces de navegación individuales */
+.deepweb-navbar .nav-links li a {
+  color: #CC0000; /* Rojo oscuro intenso (como .label) */
+  text-decoration: none;
+  font-size: 0.9rem; /* Más pequeño y crudo (como .label o .subtitle) */
+  font-weight: normal; /* Sin negrita (como .label) */
+  text-transform: uppercase; /* MAYÚSCULAS (como .label) */
+  letter-spacing: 1px; /* Espaciado (como .subtitle o .button) */
+  padding: 0.2rem 0.4rem; /* Padding más ajustado para un look crudo */
+  padding-bottom: 3px; /* Para el borde inferior */
+  border-bottom: 1px solid transparent; /* Borde para efecto hover */
+  transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+.deepweb-navbar .nav-links li a:hover,
+.deepweb-navbar .nav-links li a:focus {
+  color: #FF3333; /* Rojo brillante para errores/hover (como .errorText) */
+  border-bottom-color: #FF0000; /* Borde rojo brillante */
+  text-shadow: 0 0 5px #FF0000, 0 0 8px #FF3333; /* Resplandor (combinando .form-link:hover y .errorText) */
+  outline: none; /* Sin outline por defecto si el borde ya da feedback */
+}
+
+
+.deepweb-navbar .nav-links li a[href$="/api/auth/signout"]:hover,
+.deepweb-navbar .nav-links li a[href$="/api/auth/signout"]:focus {
+  color: #FF0000; /* Rojo sangre al pasar el mouse (como .button:hover) */
+  border-bottom-color: #FF3333;
+  text-shadow: 0 0 8px #FF0000, 0 0 15px #FF0000; /* Resplandor más intenso */
+}

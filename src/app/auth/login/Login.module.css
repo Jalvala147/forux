@@ -1,0 +1,211 @@
+/* Estilos generales del contenedor */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000; /* Negro absoluto para el fondo */
+  padding: 1rem; /* Reducido para un look más crudo */
+  font-family: 'Lucida Console', 'Courier New', monospace; /* Fuente monoespaciada */
+}
+
+/* Estilos del formulario */
+.form {
+  width: 100%;
+  max-width: 420px; /* Ligeramente más estrecho */
+  background-color: #0D0D0D; /* Negro muy oscuro, casi absoluto */
+  padding: 2rem; /* Relleno más ajustado */
+  border-radius: 0; /* Sin bordes redondeados, ángulos afilados */
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 10px rgba(255, 0, 0, 0.8); /* Sombra roja intensa y difusa */
+  border: 2px solid #FF0000; /* Borde rojo sangre sólido */
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* Elemento decorativo eliminado o adaptado */
+.form::before,
+.form::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* No interfiere con el contenido */
+  z-index: 1;
+}
+
+/* Efecto de ruido o glitch sutil */
+.form::before {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,0,0,0.03),
+    rgba(255,0,0,0.03) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.7;
+}
+/* Efecto de "scanlines" verticales */
+.form::after {
+   background: repeating-linear-gradient(
+    90deg,
+    rgba(100,0,0,0.05),
+    rgba(100,0,0,0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.6;
+}
+
+
+/* Contenido del formulario encima de los elementos decorativos */
+.form > * {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté por encima de los pseudo-elementos */
+}
+
+/* Estilos del título */
+.title {
+  color: #FF0000; /* Rojo sangre brillante */
+  font-size: 2.5rem; /* Tamaño imponente */
+  font-weight: 700; /* Bold */
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase; /* MAYÚSCULAS */
+  letter-spacing: 1.5px; /* Espaciado de letras */
+  text-shadow: 0 0 3px #FF0000, 0 0 7px #FF0000, 0 0 10px #FF0000; /* Resplandor rojo intenso */
+}
+
+/* Subtítulo adaptado o eliminado */
+.subtitle {
+  color: #990000; /* Rojo oscuro */
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Estilos de las etiquetas */
+.label {
+  color: #CC0000; /* Rojo oscuro intenso */
+  font-size: 0.85rem; /* Más pequeño y crudo */
+  font-weight: normal; /* Sin negrita */
+  margin-bottom: 0.4rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+/* Estilos de los campos de entrada */
+.input {
+  background-color: #1A1A1A; /* Negro ligeramente más claro que el fondo del form */
+  color: #FF4D4D; /* Texto rojo claro para legibilidad */
+  padding: 0.8rem 1rem;
+  border-radius: 0; /* Sin bordes redondeados */
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #990000; /* Borde rojo oscuro */
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  box-sizing: border-box;
+  caret-color: #FF0000; /* Color del cursor de texto */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #FF0000; /* Borde rojo brillante al enfocar */
+  background-color: #000000; /* Fondo negro al enfocar */
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7), inset 0 0 5px rgba(255,0,0,0.3); /* Resplandor y sombra interna */
+  color: #FF6666; /* Texto ligeramente más brillante al enfocar */
+}
+
+/* Placeholder con estilo */
+.input::placeholder {
+  color: #550000; /* Rojo muy oscuro, casi invisible */
+  opacity: 1;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+/* Estilos del texto de error */
+.errorText {
+  color: #FF3333; /* Rojo brillante para errores */
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.8rem;
+  display: block;
+  text-align: center;
+  text-shadow: 0 0 5px #FF0000;
+  font-weight: bold;
+}
+
+/* Estilos del cuadro de error */
+.errorBox {
+  background-color: rgba(153, 0, 0, 0.2); /* Fondo rojo oscuro transparente */
+  color: #FF4D4D; /* Texto rojo claro */
+  padding: 0.8rem;
+  border-radius: 0;
+  margin-bottom: 1.2rem;
+  text-align: left;
+  border: 1px solid #FF0000;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Estilos del botón */
+.button {
+  width: 100%;
+  background: #800000; /* Rojo sangre oscuro para el botón */
+  color: #000000; /* Texto negro para contraste fuerte */
+  padding: 0.9rem 1rem;
+  border-radius: 0;
+  border: 1px solid #FF3333; /* Borde rojo ligeramente más claro */
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: bold; /* Texto en negrita */
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(255,0,0,0.4);
+}
+
+.button:hover {
+  background: #FF0000; /* Rojo brillante al pasar el mouse */
+  color: #000000;
+  border-color: #FF6666;
+  box-shadow: 0 0 20px #FF0000, 0 0 30px #FF0000, inset 0 0 5px #000000; /* Resplandor intenso */
+  transform: scale(1.02); /* Ligero aumento de tamaño */
+}
+
+.button:active {
+  background: #550000; /* Rojo más oscuro al presionar */
+  color: #111111;
+  transform: scale(0.98); /* Efecto de presión */
+  box-shadow: 0 0 5px #FF0000, inset 0 0 10px #000000;
+}
+
+.button:focus {
+  outline: 2px solid #FF0000; /* Contorno rojo brillante */
+  outline-offset: 2px;
+  box-shadow: 0 0 20px #FF0000, 0 0 30px #FF0000, inset 0 0 5px #000000;
+}
+
+/* Enlace adaptado o eliminado */
+.form-link {
+  display: block;
+  text-align: center;
+  margin-top: 1.2rem;
+  color: #990000; /* Rojo oscuro */
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  text-transform: uppercase;
+}
+
+.form-link:hover {
+  color: #FF0000; /* Rojo brillante */
+  text-shadow: 0 0 5px #FF0000;
+}
