@@ -193,19 +193,18 @@
   box-shadow: 0 0 20px #FF0000, 0 0 30px #FF0000, inset 0 0 5px #000000;
 }
 
-/* Enlace adaptado o eliminado */
-.form-link {
+.formLink {
   display: block;
   text-align: center;
   margin-top: 1.2rem;
-  color: #990000; /* Rojo oscuro */
+  color: #990000;
   font-size: 0.8rem;
   text-decoration: none;
   transition: color 0.2s ease, text-shadow 0.2s ease;
   text-transform: uppercase;
 }
 
-.form-link:hover {
-  color: #FF0000; /* Rojo brillante */
+.formLink:hover {
+  color: #FF0000;
   text-shadow: 0 0 5px #FF0000;
 }

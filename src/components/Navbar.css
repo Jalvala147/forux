@@ -59,9 +59,9 @@
 }
 
 
-.deepweb-navbar .nav-links li a[href$="/api/auth/signout"]:hover,
-.deepweb-navbar .nav-links li a[href$="/api/auth/signout"]:focus {
-  color: #FF0000; /* Rojo sangre al pasar el mouse (como .button:hover) */
+.deepweb-navbar .nav-links li a[href$="/auth/logout"]:hover,
+.deepweb-navbar .nav-links li a[href$="/auth/logout"]:focus {
+  color: #FF0000;
   border-bottom-color: #FF3333;
-  text-shadow: 0 0 8px #FF0000, 0 0 15px #FF0000; /* Resplandor más intenso */
+  text-shadow: 0 0 8px #FF0000, 0 0 15px #FF0000;
 }
