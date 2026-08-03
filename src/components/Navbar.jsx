@@ -1,15 +1,18 @@
-// (Opcional) Importa el archivo CSS aquí si usas CSS Modules o quieres importarlo directamente
-// import './Navbar.css'; // o './Navbar.module.css' si usas CSS Modules
-
 import Link from "next/link";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import './Navbar.css';
-
-import Image from "next/image";
+import { getAuthUser, ensureProfile } from "@/libs/auth";
+import "./Navbar.css";
 
 async function Navbar() {
-  const session = await getServerSession(authOptions);
+  const user = await getAuthUser();
+  let profile = null;
+
+  if (user) {
+    try {
+      profile = await ensureProfile(user);
+    } catch {
+      profile = null;
+    }
+  }
 
   return (
     <nav className="deepweb-navbar">
@@ -20,10 +23,13 @@ async function Navbar() {
       </div>
 
       <ul className="nav-links">
-        {!session?.user ? (
+        <li>
+          <Link href="/">Foro</Link>
+        </li>
+        {!user ? (
           <>
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Invitado</Link>
             </li>
             <li>
               <Link href="/auth/login">Login</Link>
@@ -35,10 +41,13 @@ async function Navbar() {
         ) : (
           <>
             <li>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/threads/new">Nuevo hilo</Link>
             </li>
             <li>
-              <Link href="/api/auth/signout">Logout</Link>
+              <Link href="/dashboard">{profile?.username || "Dashboard"}</Link>
+            </li>
+            <li>
+              <Link href="/auth/logout">Logout</Link>
             </li>
           </>
         )}

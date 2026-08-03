@@ -1,32 +1,43 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import styles from './Login.module.css';
 
-function LoginPage() {
+import { useForm } from "react-hook-form";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState, Suspense } from "react";
+import Link from "next/link";
+import { createClient } from "@/libs/supabase/client";
+import styles from "./Login.module.css";
+
+function LoginForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = handleSubmit(async (data) => {
-    const res = await signIn("credentials", {
+    setError(null);
+    setLoading(true);
+
+    const supabase = createClient();
+    const { error: signInError } = await supabase.auth.signInWithPassword({
       email: data.email,
       password: data.password,
-      redirect: false,
     });
 
-    if (res.error) {
-      setError(res.error);
-    } else {
-      router.push("/dashboard");
-      router.refresh();
+    setLoading(false);
+
+    if (signInError) {
+      setError(signInError.message);
+      return;
     }
+
+    const next = searchParams.get("next") || "/";
+    router.push(next);
+    router.refresh();
   });
 
   return (
@@ -35,6 +46,7 @@ function LoginPage() {
         {error && <p className={styles.errorBox}>{error}</p>}
 
         <h1 className={styles.title}>Login</h1>
+        <p className={styles.subtitle}>Accede para publicar y responder</p>
 
         <label htmlFor="email" className={styles.label}>
           Email:
@@ -72,10 +84,31 @@ function LoginPage() {
           <span className={styles.errorText}>{errors.password.message}</span>
         )}
 
-        <button className={styles.button}>Login</button>
+        <button className={styles.button} disabled={loading}>
+          {loading ? "Entrando..." : "Login"}
+        </button>
+
+        <Link href="/" className={styles.formLink}>
+          Continuar como invitado (solo lectura)
+        </Link>
+        <Link href="/auth/register" className={styles.formLink}>
+          ¿No tienes cuenta? Regístrate
+        </Link>
       </form>
     </div>
   );
 }
 
-export default LoginPage;
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className={styles.container}>
+          <p className={styles.subtitle}>Cargando...</p>
+        </div>
+      }
+    >
+      <LoginForm />
+    </Suspense>
+  );
+}

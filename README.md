@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Forux
 
-## Getting Started
+Foro Next.js + Supabase Auth + Postgres. Invitados leen; usuarios autenticados publican y responden.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js 15 en Vercel
+- Supabase Auth (email/password)
+- Supabase Postgres + Prisma
+- Guest = solo lectura
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Crea proyecto en Supabase
+2. Ejecuta **todo** el archivo `supabase/schema.sql` en SQL Editor
+3. Configura Auth (ver checklist abajo / README)
+4. Copia `.env.example` → `.env` con tus keys y connection strings
+5. `npm install && npx prisma generate && npm run dev`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> Las tablas se crean con `supabase/schema.sql` (incluye trigger de perfil y RLS). No hace falta `prisma migrate` contra Supabase; Prisma solo genera el client.
 
-## Learn More
+## Deploy Vercel
 
-To learn more about Next.js, take a look at the following resources:
+Mismas variables que `.env.example` en Project Settings → Environment Variables.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Roles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Modo | Leer | Crear hilo | Responder |
+|------|------|------------|-----------|
+| Invitado | Sí | No | No |
+| Logueado | Sí | Sí | Sí |

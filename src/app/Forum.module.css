@@ -1,0 +1,247 @@
+.forum {
+  min-height: calc(100vh - 70px);
+  background-color: #000000;
+  color: #ff4d4d;
+  font-family: "Lucida Console", "Courier New", monospace;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.header {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  border-bottom: 1px solid #800000;
+  padding-bottom: 1rem;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  color: #ff0000;
+  font-size: 2rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 3px #ff0000, 0 0 7px #ff0000;
+}
+
+.subtitle {
+  color: #990000;
+  font-size: 0.85rem;
+  margin: 0.4rem 0 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button,
+.buttonSecondary {
+  display: inline-block;
+  background: #800000;
+  color: #000000;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ff3333;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover,
+.buttonSecondary:hover {
+  background: #ff0000;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+.buttonSecondary {
+  background: transparent;
+  color: #cc0000;
+}
+
+.list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.threadLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #0d0d0d;
+  border: 1px solid #800000;
+  padding: 1rem 1.1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.threadLink:hover {
+  border-color: #ff0000;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.35);
+}
+
+.threadTitle {
+  color: #ff3333;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.meta {
+  color: #990000;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.empty {
+  max-width: 900px;
+  margin: 2rem auto 0;
+  text-align: center;
+  color: #990000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.guestBanner {
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #800000;
+  background: rgba(128, 0, 0, 0.15);
+  color: #ff6666;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.guestBanner a {
+  color: #ff0000;
+}
+
+.formWrap {
+  max-width: 640px;
+  margin: 0 auto;
+  background: #0d0d0d;
+  border: 2px solid #ff0000;
+  padding: 1.5rem;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.45);
+}
+
+.label {
+  color: #cc0000;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+.input,
+.textarea {
+  background-color: #1a1a1a;
+  color: #ff4d4d;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #990000;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  caret-color: #ff0000;
+}
+
+.textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #ff0000;
+  background-color: #000000;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+}
+
+.error {
+  background-color: rgba(153, 0, 0, 0.2);
+  color: #ff4d4d;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ff0000;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.threadBody {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  background: #0d0d0d;
+  border: 1px solid #800000;
+  padding: 1.25rem 1.4rem;
+}
+
+.content {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  color: #ff6666;
+  margin: 1rem 0 0;
+}
+
+.replies {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.reply {
+  background: #0a0a0a;
+  border: 1px solid #550000;
+  padding: 1rem 1.1rem;
+}
+
+.replyMeta {
+  color: #990000;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.sectionTitle {
+  max-width: 900px;
+  margin: 0 auto 1rem;
+  color: #cc0000;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.loginHint {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #990000;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.loginHint a {
+  color: #ff0000;
+}

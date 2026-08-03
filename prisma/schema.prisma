@@ -1,20 +1,47 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
-model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  username String @unique
-  password String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Profile {
+  id        String   @id @db.Uuid
+  email     String   @unique
+  username  String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  threads   Thread[]
+  replies   Reply[]
+
+  @@map("profiles")
+}
+
+model Thread {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  authorId  String   @map("author_id") @db.Uuid
+  author    Profile  @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  replies   Reply[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("threads")
+}
+
+model Reply {
+  id        Int      @id @default(autoincrement())
+  content   String
+  threadId  Int      @map("thread_id")
+  thread    Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  authorId  String   @map("author_id") @db.Uuid
+  author    Profile  @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("replies")
 }
